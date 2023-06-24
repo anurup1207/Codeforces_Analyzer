@@ -6,9 +6,16 @@ async function user_status() {
     
     var result = [];
     var result = response["result"];
+   
+    
     
     var mp_for_verdict = new Map();
     var mp_for_language= new Map();
+    const mp_for_unique_question= new Map();
+    var mp_for_tags= new Map();
+
+   
+    
     for(var i in result){
         // <<<=========== language ==============>>>
 
@@ -18,6 +25,11 @@ async function user_status() {
         mp_for_language.set(result[i]["programmingLanguage"], 1)
 
        // <<<=========== language ==============>>>
+        
+
+
+
+
 
 
         // <<<=========== verdict ==============>>>
@@ -28,6 +40,32 @@ async function user_status() {
         mp_for_verdict.set(result[i]["verdict"], 1)
 
        // <<<=========== verdict ==============>>>
+
+
+
+
+
+         // <<<=========== tags ==============>>>
+         var contestidindex = result[i]["problem"]["contestId"]
+         contestidindex += result[i]["problem"]["index"]
+         var ifOK= result[i]["verdict"]
+         if(ifOK=='OK'){
+            
+            if(mp_for_unique_question.has(contestidindex)==false){
+                var alltags=result[i]["problem"]["tags"];
+                for(let j in alltags){
+                    if (mp_for_tags.has(alltags[j]))
+                    mp_for_tags.set(alltags[j], mp_for_tags.get(alltags[j]) + 1)
+                else
+                    mp_for_tags.set(alltags[j], 1)
+                }
+                mp_for_unique_question.set(contestidindex,1)
+            }
+         }else{
+            // console.log("hello")
+         }
+          
+         // <<<=========== tags ==============>>>
         
     }
 
@@ -50,9 +88,9 @@ async function user_status() {
              mp_for_language.set(result[i]["programmingLanguage"], -1);
          }
      }
-     for(let i in languages){
-         console.log(languages[i]);
-     }
+    //  for(let i in languages){
+    //      console.log(languages[i]);
+    //  }
      // <<<=========== language ==============>>>
 
 
@@ -82,6 +120,32 @@ async function user_status() {
     //     console.log(verdict[i]);
     // }
     // <<<=========== verdict ==============>>>
+
+
+
+
+    // <<<=========== tags ==============>>>
+    const tags=[];
+    for(var i in result){
+        var alltags=result[i]["problem"]["tags"];
+        for(var j in alltags )
+       { 
+        if (mp_for_tags.get(alltags[j]) != -1) {
+            let tag1=alltags[j];
+            let value=mp_for_tags.get(alltags[j]);
+            tags.push({
+                [tag1]:value,
+            })
+           
+            mp_for_tags.set(alltags[j], -1);
+        }
+        }
+    }
+
+    for(let i in tags){
+        console.log(tags[i]);
+    }
+    // <<<=========== tags ==============>>>
 }
 
 user_status()
