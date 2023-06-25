@@ -13,6 +13,8 @@ async function user_status() {
     var mp_for_language= new Map();
     const mp_for_unique_question= new Map();
     var mp_for_tags= new Map();
+    var mp_for_level=new Map();
+    var mp_for_question_rating= new Map();
 
    
     
@@ -45,13 +47,16 @@ async function user_status() {
 
 
 
-         // <<<=========== tags ==============>>>
+         
          var contestidindex = result[i]["problem"]["contestId"]
          contestidindex += result[i]["problem"]["index"]
          var ifOK= result[i]["verdict"]
          if(ifOK=='OK'){
             
             if(mp_for_unique_question.has(contestidindex)==false){
+
+
+                // <<<=========== tags ==============>>>
                 var alltags=result[i]["problem"]["tags"];
                 for(let j in alltags){
                     if (mp_for_tags.has(alltags[j]))
@@ -59,13 +64,35 @@ async function user_status() {
                 else
                     mp_for_tags.set(alltags[j], 1)
                 }
+                 // <<<=========== tags ==============>>>
+
+
+
+                // ==================level solved========================
+                if (mp_for_level.has(result[i]["problem"]["index"][0]))
+                    mp_for_level.set(result[i]["problem"]["index"][0], mp_for_level.get(result[i]["problem"]["index"][0]) + 1)
+                else
+                    mp_for_level.set(result[i]["problem"]["index"][0], 1)
+
+
+                // ==================level solved========================
+
+
+            
+
+
+                // ==================problem rating========================
+                if (mp_for_question_rating.has(result[i]["problem"]["rating"]))
+                    mp_for_question_rating.set(result[i]["problem"]["rating"], mp_for_question_rating.get(result[i]["problem"]["rating"]) + 1)
+                else
+                    mp_for_question_rating.set(result[i]["problem"]["rating"], 1)
+
+                // ==================problem rating========================
+
                 mp_for_unique_question.set(contestidindex,1)
             }
-         }else{
-            // console.log("hello")
          }
-          
-         // <<<=========== tags ==============>>>
+        
         
     }
 
@@ -142,10 +169,69 @@ async function user_status() {
         }
     }
 
-    for(let i in tags){
-        console.log(tags[i]);
-    }
+    // for(let i in tags){
+    //     console.log(tags[i]);
+    // }
     // <<<=========== tags ==============>>>
+
+
+
+     
+
+
+    // <<<=========== level ==============>>>
+    const level=[];
+    for(var i in result){
+        if (mp_for_level.get(result[i]["problem"]["index"][0]) != -1) {
+            let tag1=result[i]["problem"]["index"][0];
+            let value=mp_for_level.get(result[i]["problem"]["index"][0]);
+            level.push({
+                [tag1]:value,
+            })
+           
+            mp_for_level.set(result[i]["problem"]["index"][0], -1);
+        }
+    }
+    // for(let i in level){
+    //     console.log(level[i]);
+    // }
+
+    // <<<=========== level ==============>>>
+
+
+
+
+
+
+
+
+
+    // <<<=========== rating ==============>>>
+
+    const question_rating=[];
+    for(var i in result){
+        if (mp_for_question_rating.get(result[i]["problem"]["rating"]) != -1) {
+            let tag1=result[i]["problem"]["rating"];
+            let value=mp_for_question_rating.get(result[i]["problem"]["rating"]);
+            question_rating.push({
+                [tag1]:value,
+            })
+           
+            mp_for_question_rating.set(result[i]["problem"]["rating"], -1);
+        }
+    }
+    // question_rating.sort(function(a, b) { 
+        
+    //     return a - b;
+    // });
+    for(let i in question_rating){
+        console.log(question_rating[i]);
+    }
+
+    // <<<=========== rating ==============>>>
+
+
+
 }
 
 user_status()
