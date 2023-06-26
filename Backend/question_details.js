@@ -83,8 +83,11 @@ async function question_details() {
         "problem-name" : max_question_name,
         "link" : `https://codeforces.com/contest/${contestid}/problem/${index}`,
     })
+    let percentage=attempt_one/mp_for_solved_questions.size
+    percentage=percentage.toFixed(4)
     question_details.push({
          "Solved with one submission" : attempt_one,
+         "percentage ": percentage*100,
     })
     let average1=result.length/mp_for_solved_questions.size;
     let average2=average1.toFixed(2);
