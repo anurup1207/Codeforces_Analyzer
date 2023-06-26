@@ -54,10 +54,12 @@ async function tags(){
         }
         }
     }
+    // console.log(result.length)
 
-    for(let i in tags){
-        console.log(tags[i]);
-    }
+    // for(let i in tags){
+    //     console.log(tags[i]);
+    // }
     // <<<=========== tags ==============>>>
 }
 tags();
+// module.exports={}
