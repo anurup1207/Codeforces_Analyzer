@@ -1,7 +1,6 @@
-const res = require('./fetch');
-async function question_rating(){
-    let response = await res.user_status();
-    let result = response["result"];
+const res = require("./fetch");
+
+function max_current_rating(result) {
     let mp_for_question_rating = new Map();
     const mp_for_unique_question= new Map();
 
@@ -47,11 +46,24 @@ async function question_rating(){
         }
     }
     delete question_rating["undefined"];
-    // question_rating.sort(function(a, b) { 
-        
-    //     return a - b;
-    // });
-    console.log(question_rating)
-    // <<<=========== level ==============>>>
+
+  return question_rating;
+}
+
+async function question_rating() {
+  let response_handle1 = await res.user_status_handle1();
+  let response_handle2 = await res.user_status_handle2();
+
+  let result_handle1 = response_handle1["result"];
+  let result_handle2 = response_handle2["result"];
+  let contest_details_handle1 = max_current_rating(result_handle1);
+  let contest_details_handle2 = max_current_rating(result_handle2);
+
+  let compare_handles = {
+    handle1: contest_details_handle1,
+    handle2: contest_details_handle2,
+  };
+
+  console.log(compare_handles);
 }
 question_rating();
