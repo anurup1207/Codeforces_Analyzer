@@ -70,34 +70,29 @@ async function question_details() {
       mp_for_attempt_to_each_questions.set(contestidindex, -1);
     }
   }
-     
-    let question_details=[]
-    question_details.push({
-        "tried": mp_for_tried_questions.size,
-    });
-    question_details.push({
-        "solved": mp_for_solved_questions.size,
-    })
-    question_details.push({
+  let percentage=attempt_one/mp_for_solved_questions.size
+  percentage=percentage.toFixed(4)
+
+  let average1=result.length/mp_for_solved_questions.size;
+  let average2=average1.toFixed(2);
+  
+    let question_details={
+      "tried": mp_for_tried_questions.size,
+      "solved": mp_for_solved_questions.size,
+      "max-attempt":{
         "max-attempt" : max_attempt,
         "problem-name" : max_question_name,
         "link" : `https://codeforces.com/contest/${contestid}/problem/${index}`,
-    })
-    let percentage=attempt_one/mp_for_solved_questions.size
-    percentage=percentage.toFixed(4)
-    question_details.push({
-         "Solved with one submission" : attempt_one,
+      },
+      "attempt-one":{
+        "Solved with one submission" : attempt_one,
          "percentage ": percentage*100,
-    })
-    let average1=result.length/mp_for_solved_questions.size;
-    let average2=average1.toFixed(2);
+      },
+      "average" : average2,
 
-    question_details.push({
-        "average" : average2,
-    })
-    for(let i in question_details){
-        console.log(question_details[i])
     }
+    
+    console.log(question_details)
   
 
  
