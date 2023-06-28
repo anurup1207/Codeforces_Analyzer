@@ -44,7 +44,13 @@ async function common_questions() {
         }
       }
   }
-  console.log(common_solved,common_tried);
+  
+  let common_questions={
+    "common solved":common_solved,
+    "common tried":common_tried
+  };
+  console.log(common_questions)
+
 //   let contest_details_handle1 = max_current_rating(result_handle1);
 //   let contest_details_handle2 = max_current_rating(result_handle2);
 
