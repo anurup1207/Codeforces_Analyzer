@@ -71,7 +71,8 @@ async function question_details() {
     }
   }
   let percentage=attempt_one/mp_for_solved_questions.size
-  percentage=percentage.toFixed(4)
+  percentage=percentage*100;
+  percentage=percentage.toFixed(2)
 
   let average1=result.length/mp_for_solved_questions.size;
   let average2=average1.toFixed(2);
@@ -82,13 +83,13 @@ async function question_details() {
       "max-attempt":{
         "max-attempt" : max_attempt,
         "problem-name" : max_question_name,
-        "link" : `https://codeforces.com/contest/${contestid}/problem/${index}`,
+        "link " : `https://codeforces.com/contest/${contestid}/problem/${index}`,
       },
       "attempt-one":{
         "Solved with one submission" : attempt_one,
-         "percentage ": percentage*100,
+         "percentage ": percentage,
       },
-      "average" : average2,
+      "average " : average2,
 
     }
     

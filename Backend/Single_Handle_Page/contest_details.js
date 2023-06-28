@@ -46,36 +46,30 @@ for(let i in result){
 }
 
  
-let contest_details=[]
-contest_details.push({
-    "Number of contests ": result.length,
-})
-contest_details.push({
-    "current rating" : current_rating,
-})
-contest_details.push({
-    "max rating" : max_rating,
-})
-contest_details.push({
-    "best rank" : best_rank,
-    "link ":`https://codeforces.com/contest/${contestid_best_rank}`, 
-})
-contest_details.push({
-    "worst rank" : worst_rank,
-    "link ": `https://codeforces.com/contest/${contestid_worst_rank}`,
-})
-contest_details.push({
-    "max up" : max_up,
-    "link " : `https://codeforces.com/contest/${contestid_max_up}`,
-})
-contest_details.push({
-    "max down": max_down,
-    "link ": `https://codeforces.com/contest/${contestid_max_low}`,
-})
 
-for(let i in contest_details){
-    console.log(contest_details[i])
-}
+let contest_details = {
+    "Number of contests ": result.length,
+    "current rating": current_rating,
+    "max rating": max_rating,
+    "best rank": {
+      "best rank": best_rank,
+      "link ": `https://codeforces.com/contest/${contestid_best_rank}`,
+    },
+    "worst_rank": {
+      "worst rank": worst_rank,
+      "link ": `https://codeforces.com/contest/${contestid_worst_rank}`,
+    },
+    "max_up": {
+      "max up": max_up,
+      "link ": `https://codeforces.com/contest/${contestid_max_up}`,
+    },
+    "max_down": {
+      "max down": max_down,
+      "link ": `https://codeforces.com/contest/${contestid_max_low}`,
+    },
+  };
+
+console.log(contest_details)
  
 }
 
