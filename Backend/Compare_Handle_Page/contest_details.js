@@ -44,15 +44,15 @@ function max_current_rating(result) {
       "best rank": best_rank,
       "link ": `https://codeforces.com/contest/${contestid_best_rank}`,
     },
-    worst_rank: {
+    "worst_rank": {
       "worst rank": worst_rank,
       "link ": `https://codeforces.com/contest/${contestid_worst_rank}`,
     },
-    max_up: {
+    "max_up": {
       "max up": max_up,
       "link ": `https://codeforces.com/contest/${contestid_max_up}`,
     },
-    max_down: {
+    "max_down": {
       "max down": max_down,
       "link ": `https://codeforces.com/contest/${contestid_max_low}`,
     },
