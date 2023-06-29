@@ -9,7 +9,7 @@ async function common_questions() {
   let result_handle2 = response_handle2["result"];
   let mp_for_handle1_tried=new Map();
   let mp_for_handle1_solved= new Map();
-//   console.log(result_handle1);
+
 
   for(let i in result_handle1){
     
@@ -51,14 +51,6 @@ async function common_questions() {
   };
   console.log(common_questions)
 
-//   let contest_details_handle1 = max_current_rating(result_handle1);
-//   let contest_details_handle2 = max_current_rating(result_handle2);
 
-//   let compare_handles = {
-//     handle1: contest_details_handle1,
-//     handle2: contest_details_handle2,
-//   };
-
-//   console.log(compare_handles);
 }
 common_questions();
