@@ -18,14 +18,18 @@ async function common_questions() {
     contestidindex += result_handle1[i]["problem"]["index"];
 
     let ifOK = result_handle1[i]["verdict"];
-    if (ifOK == "OK") {
+    if (ifOK == "OK" && mp_for_handle1_solved.has(contestidindex)==false) {
       mp_for_handle1_solved.set(contestidindex,1);
     }
-    mp_for_handle1_tried.set(contestidindex, 1);
+    if(mp_for_handle1_tried.has(contestidindex)==false){
+      mp_for_handle1_tried.set(contestidindex, 1);
+    }
+    
   }
-  
+  let common_tried_questions=[];
+  // let common_solved_questions=[];
   let common_tried=0;
-  let common_solved=0
+  let common_solved=0;
   for(let i in result_handle2){
     let contestidindex = result_handle2[i]["problem"]["contestId"];
     contestidindex += "-";
@@ -39,6 +43,12 @@ async function common_questions() {
     }
     if (  mp_for_handle1_tried.has(contestidindex)) {
         if(mp_for_handle1_tried.get(contestidindex)!=-1){
+        common_tried_questions.push({
+          "name": result_handle2[i]["problem"]["name"],
+          "context-id":contestidindex,
+          "link": `https://codeforces.com/contest/${result_handle2[i]["problem"]["contestId"]}/problem/${result_handle2[i]["problem"]["index"]}`
+          
+        })
         common_tried++;
         mp_for_handle1_tried.set(contestidindex,-1);
         }
@@ -47,7 +57,8 @@ async function common_questions() {
   
   let common_questions={
     "common solved":common_solved,
-    "common tried":common_tried
+    "common tried":common_tried,
+    "common tried questions":common_tried_questions,
   };
   console.log(common_questions)
 
