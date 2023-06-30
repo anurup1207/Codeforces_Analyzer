@@ -27,7 +27,7 @@ async function common_questions() {
     
   }
   let common_tried_questions=[];
-  // let common_solved_questions=[];
+ 
   let common_tried=0;
   let common_solved=0;
   for(let i in result_handle2){

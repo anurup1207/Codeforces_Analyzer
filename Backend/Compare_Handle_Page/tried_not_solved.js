@@ -67,8 +67,14 @@ async function tried_not_solved() {
   }
 
   let ans = {
-    handle1: tried_not_solved_handle1,
-    handle2: tried_not_solved_handle2,
+    handle1: {
+      "tried not solved ": tried_not_solved_handle1.length,
+      questions: tried_not_solved_handle1,
+    },
+    handle2: {
+      "tried not solved ": tried_not_solved_handle2.length,
+      questions: tried_not_solved_handle2,
+    },
   };
 
   console.log(ans);
