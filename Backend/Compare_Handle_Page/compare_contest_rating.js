@@ -7,8 +7,7 @@ async function common_contest() {
 
   let result_handle1 = response_handle1["result"];
   let result_handle2 = response_handle2["result"];
-//   let mp_for_handle1_tried=new Map();
-//   let mp_for_handle1_solved= new Map();
+
  let mp_for_contest_handle1= new Map();
  let common_contest=[];
  for(let i in result_handle1){
