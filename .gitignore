@@ -1,1 +1,3 @@
 frontend/.gitignore
+/node_modules
+.gitignore

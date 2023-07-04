@@ -1,0 +1,7 @@
+*{
+    overflow-y: hidden;
+}
+#navbar{
+    background-image: linear-gradient(#E4E7F7, #F3EDFD);
+    height: 100vh;
+}
