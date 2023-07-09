@@ -20,7 +20,7 @@ async function language(result) {
   }
 
   // <<<=========== language ==============>>>
-  const languages = [];
+  const languages = {};
   for (let i in result) {
     if (mp_for_language.get(result[i]["programmingLanguage"]) != -1) {
       let tag1 = result[i]["programmingLanguage"];

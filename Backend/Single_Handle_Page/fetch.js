@@ -6,6 +6,9 @@ async function user_status(username) {
         let response=await fetch(api)
        
         response = await response.json();
+        // if(response["status"]!='OK'){
+        //     return [];
+        // }
         // let count =Object.keys(response["result"]).length;
         // console.log(response["result"]);
        
@@ -24,6 +27,9 @@ async function user_contest_details(username){
     const api=`https://codeforces.com/api/user.rating?handle=${user_name}`
     let response=await fetch(api)
     response = await response.json();
+    // if(response["status"]!='OK'){
+    //     return [];
+    // }
   
     return response;
 }

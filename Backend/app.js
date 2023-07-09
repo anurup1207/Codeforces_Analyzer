@@ -17,7 +17,7 @@ function calculateResult(username) {
 }
 
 // Handle POST requests to '/calculate'
-app.post('/calculate', async(req, res) => {
+app.post('/analyze', async(req, res) => {
   try {
     const { username } = req.body;
     if (!username) {
@@ -27,6 +27,7 @@ app.post('/calculate', async(req, res) => {
     // Call the custom function and pass the username
     const self1 = await self.self(username);
     // console.log(verdict1);
+    // console.log(self1);
 
     res.json({ self1 });
   } catch (error) {
