@@ -1,11 +1,11 @@
 // const { compileFunction } = require('vm');
 const res = require('./fetch');
 
-async function contest_details() {
-  let response = await res.user_contest_details();
+async function contest_details(result) {
+  // let response = await res.user_contest_details();
 
 
-  let result = response["result"];
+  // let result = response["result"];
 //   console.log(result)
 let best_rank=100000;
 let max_rating=0;
@@ -69,8 +69,9 @@ let contest_details = {
     },
   };
 
-console.log(contest_details)
+return contest_details;
  
 }
 
-contest_details();
+// contest_details();
+module.exports={contest_details}

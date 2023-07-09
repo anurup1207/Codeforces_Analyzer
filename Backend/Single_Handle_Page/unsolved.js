@@ -1,10 +1,9 @@
-const res = require("./fetch");
+// const res = require("./fetch");
 
-async function unsolved() {
-  let response = await res.user_status();
- 
+async function unsolved(result) {
 
-  let result = response["result"];
+  // let response = await res.user_status();
+  // let result = response["result"];
  
 
   let mp_for_unsolved = new Map();
@@ -49,7 +48,7 @@ async function unsolved() {
       mp_for_unsolved.set(contestidindex, -1);
     }
   }
-    console.log(unsolved)
+    return unsolved;
 }
 
-unsolved();
+module.exports={unsolved}

@@ -1,7 +1,7 @@
 const res = require('./fetch');
-async function level(){
-    let response = await res.user_status();
-    let result = response["result"];
+async function level(result){
+    // let response = await res.user_status();
+    // let result = response["result"];
     let mp_for_level = new Map();
     const mp_for_unique_question= new Map();
 
@@ -47,8 +47,10 @@ async function level(){
             mp_for_level.set(result[i]["problem"]["index"][0], -1);
         }
     }
-    console.log(level)
+    // console.log(level)
+    return level;
 
     // <<<=========== level ==============>>>
 }
-level();
+// level();
+module.exports={level}

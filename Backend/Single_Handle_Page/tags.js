@@ -1,7 +1,7 @@
 const res = require('./fetch');
-async function tags(){
-    let response = await res.user_status();
-    let result = response["result"];
+async function tags(result){
+    // let response = await res.user_status();
+    // let result = response["result"];
     let mp_for_tags = new Map();
     const mp_for_unique_question= new Map();
 
@@ -54,7 +54,12 @@ async function tags(){
         }
         }
     }
-    console.log(tags);
+    for(let i in tags){
+        if(tags[i]==undefined){
+            tags[i]=0;
+        }
+    }
+    return tags
     // console.log(result.length)
 
     // for(let i in tags){
@@ -62,5 +67,5 @@ async function tags(){
     // }
     // <<<=========== tags ==============>>>
 }
-tags();
-// module.exports={}
+// tags();
+module.exports={tags}

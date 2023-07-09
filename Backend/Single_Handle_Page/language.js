@@ -1,10 +1,10 @@
 const res = require('./fetch');
 
-async function language() {
-  let response = await res.user_status();
-//   console.log(response);
+async function language(result) {
+//   let response = await res.user_status();
+// //   console.log(response);
 
-  let result = response["result"];
+//   let result = response["result"];
 
  
   let mp_for_language = new Map();
@@ -25,18 +25,18 @@ async function language() {
     if (mp_for_language.get(result[i]["programmingLanguage"]) != -1) {
       let tag1 = result[i]["programmingLanguage"];
       let value = mp_for_language.get(result[i]["programmingLanguage"]);
-      languages.push({
-        [tag1]: value,
-      });
+      // languages.push({
+      //   [tag1]: value,
+      // });
+      languages[tag1]=value,
       mp_for_language.set(result[i]["programmingLanguage"], -1);
     }
   }
-  for (let i in languages) {
-    console.log(languages[i]);
-  }
+  return languages;
   // <<<=========== language ==============>>>
 
  
 }
 
-language();
+// language();
+module.exports={language}

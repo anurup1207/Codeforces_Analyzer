@@ -1,7 +1,7 @@
 const res = require('./fetch');
-async function question_rating(){
-    let response = await res.user_status();
-    let result = response["result"];
+async function question_rating(result){
+    // let response = await res.user_status();
+    // let result = response["result"];
     let mp_for_question_rating = new Map();
     const mp_for_unique_question= new Map();
 
@@ -51,7 +51,7 @@ async function question_rating(){
         
     //     return a - b;
     // });
-    console.log(question_rating)
+    return question_rating;
     // <<<=========== level ==============>>>
 }
-question_rating();
+module.exports={question_rating}

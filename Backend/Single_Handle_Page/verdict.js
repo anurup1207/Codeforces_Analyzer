@@ -1,8 +1,8 @@
 const res = require('./fetch');
 
-async function verdict(){
-    let response = await res.user_status();
-    let result = response["result"];
+async function verdict(result){
+    // let response = await res.user_status();
+    // let result = response["result"];
       let mp_for_verdict = new Map();
 
 
@@ -17,20 +17,17 @@ async function verdict(){
   }
 
    // <<<=========== verdict ==============>>>
-  const verdict = [];
+  const verdict1 = {};
   for (let i in result) {
     if (mp_for_verdict.get(result[i]["verdict"]) != -1) {
       let tag1 = result[i]["verdict"];
       let value = mp_for_verdict.get(result[i]["verdict"]);
-      verdict.push({
-        [tag1]: value,
-      });
+      verdict1[tag1]=value,
       mp_for_verdict.set(result[i]["verdict"], -1);
     }
   }
-  for(let i in verdict){
-      console.log(verdict[i]);
-  }
+  // console.log(verdict1)
+  return verdict1
   // <<<=========== verdict ==============>>>
 }
-verdict();
+module.exports={verdict}

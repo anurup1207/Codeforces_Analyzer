@@ -1,10 +1,10 @@
 const res = require('./fetch');
 
-async function question_details() {
-  let response = await res.user_status();
-//   console.log(response);
+async function question_details(result) {
+//   let response = await res.user_status();
+// //   console.log(response);
 
-  let result = response["result"];
+//   let result = response["result"];
   result.reverse();
 
  
@@ -93,10 +93,12 @@ async function question_details() {
 
     }
     
-    console.log(question_details)
+    // console.log(question_details)
+    return question_details;
   
 
  
 }
 
-question_details();
+// question_details();
+module.exports={question_details}
