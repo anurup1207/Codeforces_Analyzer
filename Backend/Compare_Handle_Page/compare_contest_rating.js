@@ -1,12 +1,12 @@
 const res = require("./fetch");
 
 
-async function common_contest() {
-  let response_handle1 = await res.user_contest_details_handle1();
-  let response_handle2 = await res.user_contest_details_handle2();
+async function common_contest(result_handle1,result_handle2) {
+//   let response_handle1 = await res.user_contest_details_handle1();
+//   let response_handle2 = await res.user_contest_details_handle2();
 
-  let result_handle1 = response_handle1["result"];
-  let result_handle2 = response_handle2["result"];
+//   let result_handle1 = response_handle1["result"];
+//   let result_handle2 = response_handle2["result"];
 
  let mp_for_contest_handle1= new Map();
  let common_contest=[];

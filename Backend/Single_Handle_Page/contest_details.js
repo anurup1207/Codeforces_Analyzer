@@ -69,7 +69,7 @@ let contest_details = {
     },
   };
 
-return contest_details;
+// return contest_details;
  
 }
 

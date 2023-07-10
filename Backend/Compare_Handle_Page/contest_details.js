@@ -1,4 +1,4 @@
-const res = require("./fetch");
+// const res = require("./fetch");
 
 function max_current_rating(result) {
   let best_rank = 100000;
@@ -61,12 +61,12 @@ function max_current_rating(result) {
   return contest_details;
 }
 
-async function user_submission_status() {
-  let response_handle1 = await res.user_contest_details_handle1();
-  let response_handle2 = await res.user_contest_details_handle2();
+async function user_submission_status(result_handle1,result_handle2) {
+  // let response_handle1 = await res.user_contest_details_handle1();
+  // let response_handle2 = await res.user_contest_details_handle2();
 
-  let result_handle1 = response_handle1["result"];
-  let result_handle2 = response_handle2["result"];
+  // let result_handle1 = response_handle1["result"];
+  // let result_handle2 = response_handle2["result"];
   let contest_details_handle1 = max_current_rating(result_handle1);
   let contest_details_handle2 = max_current_rating(result_handle2);
 
@@ -74,7 +74,8 @@ async function user_submission_status() {
     handle1: contest_details_handle1,
     handle2: contest_details_handle2,
   };
-
+  return compare_handles;
   console.log(compare_handles);
 }
-user_submission_status();
+// user_submission_status();
+module.exports={user_submission_status}
