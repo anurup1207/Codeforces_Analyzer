@@ -1,5 +1,6 @@
 
 const fetch1 = require('../fetch');
+const { common_contest } = require('./compare_contest_rating');
 const { user_submission_status } = require('./contest_details');
 const { level } = require('./level');
 const { user_question_details } = require('./question_details');
@@ -44,6 +45,9 @@ async function compare(user_name1,user_name2){
 
     let contest_details1= await user_submission_status(result_user_name1_user_contest_details["result"],result_user_name2_user_contest_details["result"]);
     final_self["result"]["contest_details"]=contest_details1;
+
+    let comp_contest_rating= await common_contest(result_user_name1_user_contest_details["result"],result_user_name2_user_contest_details["result"]);
+    final_self["result"]["contest_rating"]=comp_contest_rating;
 
     console.log(final_self);
     return final_self;

@@ -1,4 +1,4 @@
-const res = require("./fetch");
+// const res = require("./fetch");
 
 
 async function common_contest(result_handle1,result_handle2) {
@@ -40,7 +40,8 @@ async function common_contest(result_handle1,result_handle2) {
          })
     }
  }
-
+ 
+ return common_contest;
  console.log(common_contest);
 
 
@@ -48,4 +49,5 @@ async function common_contest(result_handle1,result_handle2) {
 
 
 }
-common_contest();
+// common_contest();
+module.exports={common_contest}
