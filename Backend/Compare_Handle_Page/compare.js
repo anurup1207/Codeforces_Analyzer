@@ -1,4 +1,6 @@
 const fetch1 = require('../fetch');
+const { user_question_details } = require('./question_details');
+const question_rating  = require('./question_rating');
 const ta= require('./tags');
 const t_not_solved = require('./tried_not_solved');
 
@@ -27,6 +29,13 @@ async function compare(user_name1,user_name2){
 
     let tag= await ta.tags(result_user_name1_user_status["result"],result_user_name2_user_status["result"]);
     final_self["result"]["tags"]=tag;
+
+    let q_rating= await question_rating.question_rating(result_user_name1_user_status["result"],result_user_name2_user_status["result"]);
+    final_self["result"]["question_rating"]=q_rating;
+
+    let q_details= await user_question_details(result_user_name1_user_status["result"],result_user_name2_user_status["result"]);
+    final_self["result"]["question_details"]=q_details;
+    
     console.log(final_self);
     return final_self;
 

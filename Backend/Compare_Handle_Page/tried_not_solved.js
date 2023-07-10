@@ -1,5 +1,7 @@
 // const res = require("./fetch");
 
+// tried by one user but not solved but the second user able to solve
+
 async function tried_not_solved(result_handle1,result_handle2) {
   // let response_handle1 = await res.user_status_handle1();
   // let response_handle2 = await res.user_status_handle2();
