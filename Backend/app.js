@@ -3,20 +3,22 @@ const app = express();
 const bodyParser = require('body-parser');
 // const ver = require('./Single_Handle_Page/verdict');
 const self=require('./Single_Handle_Page/self');
+const comapre=require('./Compare_Handle_Page/compare');
 
 
 // Parse JSON request bodies
 app.use(bodyParser.json());
 
-// Custom function to calculate the result
-function calculateResult(username) {
-  // Perform your calculations or logic here based on the provided username
-  // For this example, let's calculate the length of the username
-  const result = username.length;
-  return result;
-}
 
-// Handle POST requests to '/calculate'
+// // Custom function to calculate the result
+// function calculateResult(username1, username2) {
+//   // Perform your calculations or logic here based on the provided usernames
+//   // For this example, let's concatenate the two usernames
+//   const result = `${username1} ${username2}`;
+//   return result;
+// }
+
+// Handle POST requests to '/analyze'
 app.post('/analyze', async(req, res) => {
   try {
     const { username } = req.body;
@@ -33,6 +35,33 @@ app.post('/analyze', async(req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+});
+
+// Handle POST requests to '/compare'
+// Route to calculate the result based on the usernames
+app.post('/compare', async(req, res) => {
+  const { username1, username2 } = req.body;
+
+  if (!username1 || !username2) {
+    return res.status(400).json({ error: 'Username1 or Username2 not provided' });
+  }
+
+  // Call the custom function and pass the usernames
+  const result = await comapre.compare(username1,username2);
+
+  res.json({ result });
+});
+
+
+// Catch-all route for non-existent routes
+app.all('*', (req, res) => {
+  res.status(404).send('Page not found');
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send('Internal Server Error');
 });
 
 // Start the server

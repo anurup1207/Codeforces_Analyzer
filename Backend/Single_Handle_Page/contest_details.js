@@ -1,5 +1,5 @@
 // const { compileFunction } = require('vm');
-const res = require('./fetch');
+const res = require('../fetch');
 
 async function contest_details(result) {
   // let response = await res.user_contest_details();

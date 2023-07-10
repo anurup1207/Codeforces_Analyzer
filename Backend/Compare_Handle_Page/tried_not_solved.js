@@ -1,11 +1,11 @@
-const res = require("./fetch");
+// const res = require("./fetch");
 
-async function tried_not_solved() {
-  let response_handle1 = await res.user_status_handle1();
-  let response_handle2 = await res.user_status_handle2();
+async function tried_not_solved(result_handle1,result_handle2) {
+  // let response_handle1 = await res.user_status_handle1();
+  // let response_handle2 = await res.user_status_handle2();
 
-  let result_handle1 = response_handle1["result"];
-  let result_handle2 = response_handle2["result"];
+  // let result_handle1 = response_handle1["result"];
+  // let result_handle2 = response_handle2["result"];
   let mp_for_handle1_tried = new Map();
   let mp_for_handle2_tried = new Map();
   for (let i in result_handle1) {
@@ -77,6 +77,8 @@ async function tried_not_solved() {
     },
   };
 
-  console.log(ans);
+  return ans;
 }
-tried_not_solved();
+
+
+module.exports={tried_not_solved}
