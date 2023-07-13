@@ -36,7 +36,7 @@ app.post('/analyze', async(req, res) => {
 });
 
 // Start the server
-const port = 3000; // Change this to the desired port number
+const port = 8080; // Change this to the desired port number
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
