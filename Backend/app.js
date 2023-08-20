@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors=require('cors')
 const bodyParser = require('body-parser');
 // const ver = require('./Single_Handle_Page/verdict');
 const self=require('./Single_Handle_Page/self');
@@ -7,6 +8,7 @@ const self=require('./Single_Handle_Page/self');
 
 // Parse JSON request bodies
 app.use(bodyParser.json());
+app.use(cors());
 
 // Custom function to calculate the result
 function calculateResult(username) {
@@ -17,7 +19,7 @@ function calculateResult(username) {
 }
 
 // Handle POST requests to '/calculate'
-app.post('/analyze', async(req, res) => {
+app.post('/analyze',cors(), async(req, res) => {
   try {
     const { username } = req.body;
     if (!username) {
