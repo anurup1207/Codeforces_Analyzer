@@ -1,4 +1,7 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=PT+Sans&family=Questrial&display=swap');
+*{
+    /* overflow-x: hidden ; */
+}
 #user{
     height: 10%;
     /* background-image: linear-gradient(#F5DAFF99, #FFFFFF); */
@@ -16,16 +19,28 @@
 #details{
     height: 25%;
     text-align: left;
-    padding: 2%;
+    padding: 5%;
 }
 #ques_detail{
     background: linear-gradient(180deg, rgba(214, 219, 239, 0.5) 0%, rgba(231, 215, 231, 0.5) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     /* background-image: linear-gradient(to right, #FFFFFF , #F5DAFF99); */
 }
 
 #unsolved{
-    height:20%
+    height:20%;
+    background: linear-gradient(180deg, rgba(214, 219, 239, 0.5) 0%, rgba(231, 215, 231, 0.5) 100%);
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    margin-left: 4%;
+    margin-right: 9%;
+
 }
 #prob_desc{
     height: 20%;
@@ -33,12 +48,77 @@
 }
 #level{
     background: linear-gradient(180deg, rgba(213, 219, 241, 0.5) 0%, rgba(245, 233, 254, 0.5) 100%);
+    margin-left: 15%;
+    margin-right: 15%;
+    border-radius: 10px;
     /* margin-right: 20px; */
     /* padding-left: 2%; */
 }
 #prob_rat{
     background: linear-gradient(180deg, rgba(213, 219, 241, 0.5) 0%, rgba(245, 233, 254, 0.5) 100%);
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-right: 15%; 
+    border-radius: 10px;                    
     /* padding-left: 2%; */
     /* margin-left: 2%; */
 
+}
+
+.best_rank{
+    font-family: 'Manrope', sans-serif;
+    font-size: 40px;
+    color:#006ED3;
+    border-left: 4px solid #369FFF80;
+    margin-left: 60px;
+
+}
+
+.worst_rank{
+    font-family: 'Manrope', sans-serif;
+    font-size: 40px;
+    color:#006ED3;
+    border-left: 4px solid #369FFF80;
+    margin-left: 30px;
+    
+}
+
+.left{
+    font-family: 'PT Sans';
+    font-size: 16px;
+    font-weight: 500;
+    color:#8491A5;
+}
+.right{
+    font-family: 'Questrial';
+    font-size: 16px;
+    font-weight: 700;
+    color:#09244B;
+    border-left: 2px solid #9BA9D080;    ;
+}
+
+#lang{
+    background: linear-gradient(180deg, #F2EDFD 0%, #E5E8F8 100%);
+    border-radius: 10px;
+    margin-left: 30px;
+}
+#verdict{
+    background: linear-gradient(180deg, #F2EDFD 0%, #E5E8F8 100%);
+    border-radius: 10px;
+    margin-left: 30px;
+}
+
+#rating{
+    background: linear-gradient(180deg, rgba(213, 219, 241, 0.5) 0%, rgba(245, 233, 254, 0.5) 100%);
+    margin-left: 15%;
+    margin-right: 15%;
+    border-radius: 10px;
+    /* margin-right: 20px; */
+    /* padding-left: 2%; */
+}
+#tags{
+    background: linear-gradient(180deg, rgba(213, 219, 241, 0.5) 0%, rgba(245, 233, 254, 0.5) 100%);
+    margin-left: 15%;
+    margin-right: 15%;
+    border-radius: 10px;
 }

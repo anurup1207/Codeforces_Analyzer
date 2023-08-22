@@ -23,7 +23,7 @@ const Handle = () => {
             setUsername(e.target.value);
           }}
         />
-        <button type="submit" onClick={handleSubmit}>
+        <button type="submit" className='mx-2 btn-secondary px-2' style={{borderRadius:'5px'}} onClick={handleSubmit}>
           Analyze
         </button>
       </form>

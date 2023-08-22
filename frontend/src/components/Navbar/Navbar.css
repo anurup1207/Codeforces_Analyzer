@@ -1,17 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Quicksand:wght@700&display=swap');
 
-.cf{
-    font-family: 'Quicksand', sans-serif; 
+.cf {
+    font-family: 'Quicksand', sans-serif;
 }
 
-.section{
+.section {
     font-family: 'Inter', sans-serif;
     text-indent: 10px;
     display: inline;
 }
 
 
-.features{
+.features {
     display: inline-block;
     text-align: center;
+}
+
+.navbar-container {
+    position: relative;
+    /* This should be a non-static position */
+    height: 100px;
+    /* Set an appropriate height for your navbar */
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16%;
+    height: 100vh;
+    /* background-color: white; */
+    background: linear-gradient(180deg, #E4E7F7 0%, #F3EDFD 100%);
+
+
+    border-bottom: 1px solid #ccc;
+
+    padding: 10px 0;
+
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+
 }
