@@ -1,12 +1,12 @@
-const res = require("./fetch");
+// const res = require("./fetch");
 
 
-async function common_questions() {
-  let response_handle1 = await res.user_status_handle1();
-  let response_handle2 = await res.user_status_handle2();
+async function common_questions(result_handle1,result_handle2) {
+  // let response_handle1 = await res.user_status_handle1();
+  // let response_handle2 = await res.user_status_handle2();
 
-  let result_handle1 = response_handle1["result"];
-  let result_handle2 = response_handle2["result"];
+  // let result_handle1 = response_handle1["result"];
+  // let result_handle2 = response_handle2["result"];
   let mp_for_handle1_tried=new Map();
   let mp_for_handle1_solved= new Map();
 
@@ -60,8 +60,10 @@ async function common_questions() {
     "common tried":common_tried,
     "common tried questions":common_tried_questions,
   };
-  console.log(common_questions)
+  return common_questions;
+  // console.log(common_questions)
 
 
 }
-common_questions();
+// common_questions();
+module.exports={common_questions}

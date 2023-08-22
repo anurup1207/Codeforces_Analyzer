@@ -1,4 +1,4 @@
-const res = require('./fetch');
+// const res = require('./fetch');
  function question_level(result){
    
     let mp_for_tags = new Map();
@@ -60,12 +60,12 @@ const res = require('./fetch');
     // <<<=========== level ==============>>>
 }
 
-async function tags() {
-    let response_handle1 = await res.user_status_handle1();
-    let response_handle2 = await res.user_status_handle2();
+async function tags(result_handle1,result_handle2) {
+    // let response_handle1 = await res.user_status_handle1();
+    // let response_handle2 = await res.user_status_handle2();
   
-    let result_handle1 = response_handle1["result"];
-    let result_handle2 = response_handle2["result"];
+    // let result_handle1 = response_handle1["result"];
+    // let result_handle2 = response_handle2["result"];
     let contest_details_handle1 = question_level(result_handle1);
     let contest_details_handle2 = question_level(result_handle2);
   
@@ -74,8 +74,8 @@ async function tags() {
       handle2: contest_details_handle2,
     };
   
-    console.log(compare_handles);
+    return compare_handles;
     
   }
 
-tags();
+module.exports={tags}

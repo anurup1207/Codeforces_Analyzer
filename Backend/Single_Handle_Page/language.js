@@ -1,4 +1,4 @@
-const res = require('./fetch');
+const res = require('../fetch');
 
 async function language(result) {
 //   let response = await res.user_status();

@@ -1,4 +1,4 @@
-const res = require('./fetch');
+const res = require('../fetch');
 async function tags(result){
     // let response = await res.user_status();
     // let result = response["result"];
