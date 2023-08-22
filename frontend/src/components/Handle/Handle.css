@@ -1,0 +1,15 @@
+.handle{
+    height: 20vh;
+    width: 50vw;
+    margin: auto;
+    margin-top: 5%;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input{
+    width: 20vw;
+    height: 5vh;
+}

@@ -80,16 +80,16 @@ async function question_details(result) {
     let question_details={
       "tried": mp_for_tried_questions.size,
       "solved": mp_for_solved_questions.size,
-      "max-attempt":{
-        "max-attempt" : max_attempt,
-        "problem-name" : max_question_name,
-        "link " : `https://codeforces.com/contest/${contestid}/problem/${index}`,
+      "max_attempt":{
+        "max_attempt" : max_attempt,
+        "problem_name" : max_question_name,
+        "link" : `https://codeforces.com/contest/${contestid}/problem/${index}`,
       },
-      "attempt-one":{
-        "Solved with one submission" : attempt_one,
-         "percentage ": percentage,
+      "attempt_one":{
+        "Solved_with_one_submission" : attempt_one,
+         "percentage": percentage,
       },
-      "average " : average2,
+      "average" : average2,
 
     }
     

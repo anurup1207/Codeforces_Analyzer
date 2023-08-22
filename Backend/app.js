@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors=require('cors')
 const bodyParser = require('body-parser');
 // const ver = require('./Single_Handle_Page/verdict');
 const self=require('./Single_Handle_Page/self');
@@ -8,8 +9,11 @@ const comapre=require('./Compare_Handle_Page/compare');
 
 // Parse JSON request bodies
 app.use(bodyParser.json());
+app.use(cors());
 
 
+// Handle POST requests to '/calculate'
+app.post('/analyze',cors(), async(req, res) => {
 // // Custom function to calculate the result
 // function calculateResult(username1, username2) {
 //   // Perform your calculations or logic here based on the provided usernames
@@ -20,6 +24,7 @@ app.use(bodyParser.json());
 
 // Handle POST requests to '/analyze'
 app.post('/analyze', async(req, res) => {
+
   try {
     const { username } = req.body;
     if (!username) {
@@ -65,7 +70,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const port = 3000; // Change this to the desired port number
+const port = 8080; // Change this to the desired port number
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
