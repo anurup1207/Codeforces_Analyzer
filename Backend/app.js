@@ -14,16 +14,7 @@ app.use(cors());
 
 
 // Handle POST requests to '/calculate'
-app.post('/analyze',cors(), async(req, res) => {
-// // Custom function to calculate the result
-// function calculateResult(username1, username2) {
-//   // Perform your calculations or logic here based on the provided usernames
-//   // For this example, let's concatenate the two usernames
-//   const result = `${username1} ${username2}`;
-//   return result;
-// }
 
-// Handle POST requests to '/analyze'
 app.post('/analyze', async(req, res) => {
 
   try {

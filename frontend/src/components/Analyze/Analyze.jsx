@@ -340,7 +340,7 @@ const Analyze = () => {
               </div>
               <div className="col-6 text-start left">Maximum Attempts</div>
               <div className="col-6 text-end right">
-                {data?.question_details?.max_attempt?.max_attempt}
+                {data?.question_details?.max_attempt?.max_attempt} <Link to={data?.question_details?.max_attempt?.link} target="_blank" style={{textDecoration:'none'}}> {`(${data?.question_details?.max_attempt?.problem_name})`}</Link>
               </div>
               <div className="col-6 text-start left">Solved in 1st Attempt</div>
               <div className="col-6 text-end right">
