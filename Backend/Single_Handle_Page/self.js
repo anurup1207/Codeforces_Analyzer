@@ -1,4 +1,4 @@
-const fetch1 = require('./fetch');
+const fetch1 = require('../fetch');
 const  question_rating = require('./questions_rating');
 const  question_details = require('./question_details');
 const  lev = require('./level');
