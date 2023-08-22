@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors=require('cors')
@@ -38,7 +39,7 @@ app.post('/analyze',cors(), async(req, res) => {
 });
 
 // Start the server
-const port = 8080; // Change this to the desired port number
+const port = process.env.PORT || 8080; // Change this to the desired port number
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
