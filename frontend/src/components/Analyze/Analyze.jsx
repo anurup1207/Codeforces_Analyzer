@@ -340,7 +340,7 @@ const Analyze = () => {
               </div>
               <div className="col-6 text-start left">Maximum Attempts</div>
               <div className="col-6 text-end right">
-                {data?.question_details?.max_attempt?.max_attempt}
+                {data?.question_details?.max_attempt?.max_attempt} <Link to={data?.question_details?.max_attempt?.link} target="_blank" style={{textDecoration:'none'}}> {`(${data?.question_details?.max_attempt?.problem_name})`}</Link>
               </div>
               <div className="col-6 text-start left">Solved in 1st Attempt</div>
               <div className="col-6 text-end right">
@@ -353,20 +353,18 @@ const Analyze = () => {
               <div className="col-6 text-start left">Max Up</div>
               <div className="col-6 text-end right">
                 {data?.contest_details?.max_up?.max_up}{" "}
-                <a
+                <Link to={data?.contest_details?.max_up?.link}
                   target="_blank"
-                  href={data?.contest_details?.max_up?.link}
                   style={{ textDecoration: "none" }}
-                >{`(${data?.contest_details?.max_up?.contest})`}</a>
+                >{`(${data?.contest_details?.max_up?.contest})`}</Link>
               </div>
               <div className="col-6 text-start left">Max Down</div>
               <div className="col-6 text-end right">
                 {data?.contest_details?.max_down?.max_down}{" "}
-                <a
+                <Link to={data?.contest_details?.max_down?.link}
                   target="_blank"
-                  href={data?.contest_details?.max_down?.link}
                   style={{ textDecoration: "none" }}
-                >{`(${data?.contest_details?.max_down?.contest})`}</a>
+                >{`(${data?.contest_details?.max_down?.contest})`}</Link>
               </div>
             </div>
           </div>

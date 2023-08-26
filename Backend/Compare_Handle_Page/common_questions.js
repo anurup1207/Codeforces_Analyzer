@@ -45,7 +45,7 @@ async function common_questions(result_handle1,result_handle2) {
         if(mp_for_handle1_tried.get(contestidindex)!=-1){
         common_tried_questions.push({
           "name": result_handle2[i]["problem"]["name"],
-          "context-id":contestidindex,
+          "context_id":contestidindex,
           "link": `https://codeforces.com/contest/${result_handle2[i]["problem"]["contestId"]}/problem/${result_handle2[i]["problem"]["index"]}`
           
         })
@@ -56,9 +56,9 @@ async function common_questions(result_handle1,result_handle2) {
   }
   
   let common_questions={
-    "common solved":common_solved,
-    "common tried":common_tried,
-    "common tried questions":common_tried_questions,
+    "common_solved":common_solved,
+    "common_tried":common_tried,
+    "common_tried_questions":common_tried_questions,
   };
   return common_questions;
   // console.log(common_questions)

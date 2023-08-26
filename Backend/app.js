@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors=require('cors')
@@ -13,16 +14,7 @@ app.use(cors());
 
 
 // Handle POST requests to '/calculate'
-app.post('/analyze',cors(), async(req, res) => {
-// // Custom function to calculate the result
-// function calculateResult(username1, username2) {
-//   // Perform your calculations or logic here based on the provided usernames
-//   // For this example, let's concatenate the two usernames
-//   const result = `${username1} ${username2}`;
-//   return result;
-// }
 
-// Handle POST requests to '/analyze'
 app.post('/analyze', async(req, res) => {
 
   try {
@@ -70,7 +62,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const port = 8080; // Change this to the desired port number
+const port = process.env.PORT || 8080; // Change this to the desired port number
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

@@ -37,24 +37,24 @@ function max_current_rating(result) {
     current_rating = result[i]["newRating"];
   }
   let contest_details = {
-    "Number of contests ": result.length,
-    "current rating": current_rating,
-    "max rating": max_rating,
-    "best rank": {
-      "best rank": best_rank,
-      "link ": `https://codeforces.com/contest/${contestid_best_rank}`,
+    "Number_of_contests": result.length,
+    "current_rating": current_rating,
+    "max_rating": max_rating,
+    "best_rank": {
+      "best_rank": best_rank,
+      "link": `https://codeforces.com/contest/${contestid_best_rank}`,
     },
     "worst_rank": {
-      "worst rank": worst_rank,
-      "link ": `https://codeforces.com/contest/${contestid_worst_rank}`,
+      "worst_rank": worst_rank,
+      "link": `https://codeforces.com/contest/${contestid_worst_rank}`,
     },
     "max_up": {
-      "max up": max_up,
-      "link ": `https://codeforces.com/contest/${contestid_max_up}`,
+      "max_up": max_up,
+      "link": `https://codeforces.com/contest/${contestid_max_up}`,
     },
     "max_down": {
-      "max down": max_down,
-      "link ": `https://codeforces.com/contest/${contestid_max_low}`,
+      "max_down": max_down,
+      "link": `https://codeforces.com/contest/${contestid_max_low}`,
     },
   };
 
