@@ -353,20 +353,18 @@ const Analyze = () => {
               <div className="col-6 text-start left">Max Up</div>
               <div className="col-6 text-end right">
                 {data?.contest_details?.max_up?.max_up}{" "}
-                <a
+                <Link to={data?.contest_details?.max_up?.link}
                   target="_blank"
-                  href={data?.contest_details?.max_up?.link}
                   style={{ textDecoration: "none" }}
-                >{`(${data?.contest_details?.max_up?.contest})`}</a>
+                >{`(${data?.contest_details?.max_up?.contest})`}</Link>
               </div>
               <div className="col-6 text-start left">Max Down</div>
               <div className="col-6 text-end right">
                 {data?.contest_details?.max_down?.max_down}{" "}
-                <a
+                <Link to={data?.contest_details?.max_down?.link}
                   target="_blank"
-                  href={data?.contest_details?.max_down?.link}
                   style={{ textDecoration: "none" }}
-                >{`(${data?.contest_details?.max_down?.contest})`}</a>
+                >{`(${data?.contest_details?.max_down?.contest})`}</Link>
               </div>
             </div>
           </div>
