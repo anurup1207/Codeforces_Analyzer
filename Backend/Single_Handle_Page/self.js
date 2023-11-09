@@ -8,6 +8,7 @@ const unsol = require('./unsolved');
 const ver = require('./verdict');
 const lan = require('./language');
 const c_details  = require('./contest_details');
+const rating_d = require('./rating_time');
 
 
 
@@ -50,6 +51,9 @@ async function self (user_name){
 
     contest_details= await c_details.contest_details(result_user_contest_details["result"]);
     final_self["result"]["contest_details"]=contest_details;
+
+    Rating_time= await rating_d.rating_time(result_user_contest_details["result"]);
+    final_self["result"]["rating_time"]=Rating_time;
 
     return final_self;
     // console.log(final_self)
