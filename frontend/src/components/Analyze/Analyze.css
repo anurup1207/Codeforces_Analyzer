@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=PT+Sans&family=Questrial&display=swap');
-*{
-    /* overflow-x: hidden ; */
-}
+
 #user{
     height: 10%;
     /* background-image: linear-gradient(#F5DAFF99, #FFFFFF); */

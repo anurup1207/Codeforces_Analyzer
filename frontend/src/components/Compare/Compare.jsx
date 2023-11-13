@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Chart from "react-apexcharts";
 import "./Compare.css";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -11,7 +12,9 @@ const Compare = () => {
   console.log(handle1);
   console.log(handle2);
 
+
   const [data, setData] = useState();
+  
   const getApiData = async () => {
     try {
       const response = await axios.post(
@@ -35,9 +38,40 @@ const Compare = () => {
     }
   };
 
+
   useEffect(() => {
     getApiData();
   }, [handle1, handle2]);
+
+  const [rating,setRating]=useState({
+    options: {
+      chart: {
+        type: "bar",
+        dataLabels: {
+          enabled: false,
+        },
+      },
+      xaxis: {
+        categories: ["Current Rating","Max Rating","Min Rating"],
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: "50%",
+        },
+      },
+    },
+    series: [
+      {
+        name: {handle1},
+        data1: [data?.contest_details?.handle1?.current_rating,data?.contest_details?.handle1?.max_rating],
+      },
+      {
+        name: {handle2},
+        data2: [data?.contest_details?.handle2?.current_rating,data?.contest_details?.handle2?.max_rating],
+      },
+    ],
+  })
+
   return (
     <>
       <div style={{ maxWidth: "1500px", margin: "auto" }}>
@@ -70,32 +104,19 @@ const Compare = () => {
           </div>
         </div>
 
-        <div className="common-contest">
-          <div className="row">
-            <h5>Common Contest</h5>
-            <h5>{handle1}</h5>
-            <h5>{handle2}</h5>
-              <h5>Distance</h5>
-            {data?.contest_rating.map(
-              (item, index) => (
-                <div className="col-12" key={index}>
-                  <div className="row">
-                    <div className="col-6">
-                      <p>{item?.name}</p>
-                    </div>
-                    <div className="col-2">
-                      
-                    </div>
-                    <div className="col-2">
-                    </div>
-                    <div className="col-2">
-                    </div>
-                  </div>
-                </div>
-              )
-            )}
+        <div className="row">
+          <div className="col-5 rating">
+          <Chart
+              options={rating.options}
+              series={rating.series}
+              type="bar"
+              width="800"
+              height="300"
+            />
           </div>
+          <div className="col-5 contest"></div>
         </div>
+        
       </div>
     </>
   );
