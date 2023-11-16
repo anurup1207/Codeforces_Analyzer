@@ -11,6 +11,7 @@ const Analyze = () => {
   const handle = searchParams.get("handle");
   console.log(handle);
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
   const colors = ["#FF5733", "#33FF57", "#3366FF", "#FF33CC", "#FFFF33"];
   const [levels, setLevels] = useState({
     options: {
@@ -72,40 +73,40 @@ const Analyze = () => {
     labels: [],
   });
   const [tags, setTags] = useState({
-      options: {
-        chart: {
-          type: 'pie',
-        },
-        legend: {
-          show: true,
-          position: 'right', // You can adjust the position of the legend
-          formatter: function (seriesName, opts) {
-            const tagIndex = opts.seriesIndex;
-            // const tagName=tagSeries[tagIndex];
-            const value=opts.w.globals.series[tagIndex];
-            return `${seriesName} - ${value}`;
-          },
+    options: {
+      chart: {
+        type: "pie",
+      },
+      legend: {
+        show: true,
+        position: "right", // You can adjust the position of the legend
+        formatter: function (seriesName, opts) {
+          const tagIndex = opts.seriesIndex;
+          // const tagName=tagSeries[tagIndex];
+          const value = opts.w.globals.series[tagIndex];
+          return `${seriesName} - ${value}`;
         },
       },
+    },
     series: [],
     labels: [],
   });
   const [rating, setRating] = useState({
     options: {
       chart: {
-        id: "basic-bar"
+        id: "basic-bar",
       },
       xaxis: {
-        categories: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
-      }
+        categories: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+      },
     },
     series: [
       {
         name: "series-1",
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
-      }
-    ]
-  })
+        data: [30, 40, 45, 50, 49, 60, 70, 91],
+      },
+    ],
+  });
   const getApiData = async () => {
     try {
       const response = await axios.post(
@@ -120,9 +121,11 @@ const Analyze = () => {
         }
       );
       setData(response.data.self1.result);
+      setLoading(false);
       console.log(response.data.self1.result);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -138,15 +141,17 @@ const Analyze = () => {
       const labels = [];
       const submission = [];
       const sub_resp = [];
-      const tagSeries=[];
-      const ques_solved=[];
-      const chartLabels = []; 
+      const tagSeries = [];
+      const ques_solved = [];
+      const chartLabels = [];
       for (let key in data.level) {
         categories.push(key);
         seriesData.push(data.level[key]);
       }
       const sortedCategories = categories.slice().sort().reverse();
-      const sortedSeriesData = sortedCategories.map(category => data.level[category]);
+      const sortedSeriesData = sortedCategories.map(
+        (category) => data.level[category]
+      );
       const colorSeries = sortedCategories.map((value, index) => {
         return {
           y: value,
@@ -186,7 +191,9 @@ const Analyze = () => {
       const sortedRating = numericRating.slice().sort((a, b) => b - a);
       // const sortedRating = rating.slice().sort().reverse();
       // Sort the solved array based on the sortedRating order
-const sortedSolved = solved.map((_, index) => solved[numericRating.indexOf(sortedRating[index])]);
+      const sortedSolved = solved.map(
+        (_, index) => solved[numericRating.indexOf(sortedRating[index])]
+      );
       setProb_rating((prevProb_rating) => ({
         options: {
           chart: {
@@ -219,14 +226,13 @@ const sortedSolved = solved.map((_, index) => solved[numericRating.indexOf(sorte
         labels: submission,
       }));
 
-
       for (let key in data.tags) {
         tagSeries.push(key);
         ques_solved.push(data.tags[key]);
         // chartLabels.push(`${key} - ${data.tags[key]}`);
       }
-      
-      console.log("Tag series is " +tagSeries);
+
+      console.log("Tag series is " + tagSeries);
       console.log(ques_solved);
       console.log(chartLabels);
       setTags((prevTags) => ({
@@ -238,9 +244,21 @@ const sortedSolved = solved.map((_, index) => solved[numericRating.indexOf(sorte
     }
   }, [data]);
 
+  if (loading) {
+    // Render the loading message in the center of the screen
+    return (
+      <div className="loading-container">
+        {/* <div className="loading-message">Loading...</div> */}
+        <div class="spinner-border spinner-border-lg" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-      <div style={{maxWidth:'1500px',margin:'auto'}}>
+      <div style={{ maxWidth: "1500px", margin: "auto" }}>
         <div className="row">
           <div className="py-4 px-5" id="user">
             <h2>{handle}</h2>
@@ -272,15 +290,21 @@ const sortedSolved = solved.map((_, index) => solved[numericRating.indexOf(sorte
         <div id="tags" className="mt-4">
           <div className="col-12 ">
             <h5>Tags</h5>
-            <div style={{display:'flex',alignContent:'center',justifyContent:'center'}}>
-            <Chart
-                  options={tags.options}
-                  series={tags.series}
-                  // labels={tags.labels}
-                  type="pie"
-                  width="500"
-                />
-                </div>
+            <div
+              style={{
+                display: "flex",
+                alignContent: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Chart
+                options={tags.options}
+                series={tags.series}
+                // labels={tags.labels}
+                type="pie"
+                width="500"
+              />
+            </div>
           </div>
         </div>
 
@@ -344,7 +368,15 @@ const sortedSolved = solved.map((_, index) => solved[numericRating.indexOf(sorte
               </div>
               <div className="col-6 text-start left">Maximum Attempts</div>
               <div className="col-6 text-end right">
-                {data?.question_details?.max_attempt?.max_attempt} <Link to={data?.question_details?.max_attempt?.link} target="_blank" style={{textDecoration:'none'}}> {`(${data?.question_details?.max_attempt?.problem_name})`}</Link>
+                {data?.question_details?.max_attempt?.max_attempt}{" "}
+                <Link
+                  to={data?.question_details?.max_attempt?.link}
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  {" "}
+                  {`(${data?.question_details?.max_attempt?.problem_name})`}
+                </Link>
               </div>
               <div className="col-6 text-start left">Solved in 1st Attempt</div>
               <div className="col-6 text-end right">
@@ -357,7 +389,8 @@ const sortedSolved = solved.map((_, index) => solved[numericRating.indexOf(sorte
               <div className="col-6 text-start left">Max Up</div>
               <div className="col-6 text-end right">
                 {data?.contest_details?.max_up?.max_up}{" "}
-                <Link to={data?.contest_details?.max_up?.link}
+                <Link
+                  to={data?.contest_details?.max_up?.link}
                   target="_blank"
                   style={{ textDecoration: "none" }}
                 >{`(${data?.contest_details?.max_up?.contest})`}</Link>
@@ -365,7 +398,8 @@ const sortedSolved = solved.map((_, index) => solved[numericRating.indexOf(sorte
               <div className="col-6 text-start left">Max Down</div>
               <div className="col-6 text-end right">
                 {data?.contest_details?.max_down?.max_down}{" "}
-                <Link to={data?.contest_details?.max_down?.link}
+                <Link
+                  to={data?.contest_details?.max_down?.link}
                   target="_blank"
                   style={{ textDecoration: "none" }}
                 >{`(${data?.contest_details?.max_down?.contest})`}</Link>
