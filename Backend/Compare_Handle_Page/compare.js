@@ -57,7 +57,7 @@ async function compare(user_name1,user_name2){
     let Rating_time1 = await rating_time(result_user_name1_user_contest_details["result"],result_user_name2_user_contest_details["result"])
     final_self["result"]["rating_time"]=Rating_time1
 
-    console.log(final_self);
+    // console.log(final_self);
     return final_self;
 
 }
