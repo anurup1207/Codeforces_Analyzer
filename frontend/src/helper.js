@@ -1,1 +1,1 @@
-export const BASE_URL="https://codeforces-n.onrender.com"
+export const BASE_URL="https://codeforces-analyzer-backend-d8rm.onrender.com"
