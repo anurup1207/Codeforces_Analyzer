@@ -145,6 +145,7 @@ const Analyze = () => {
         seriesData.push(data.level[key]);
       }
       const sortedCategories = categories.slice().sort().reverse();
+      const sortedSeriesData = sortedCategories.map(category => data.level[category]);
       const colorSeries = sortedCategories.map((value, index) => {
         return {
           y: value,
@@ -169,7 +170,7 @@ const Analyze = () => {
         series: [
           {
             name: "Solved",
-            data: seriesData,
+            data: sortedSeriesData,
           },
         ],
       }));
@@ -183,6 +184,8 @@ const Analyze = () => {
       // Sort the numericRating array in descending order
       const sortedRating = numericRating.slice().sort((a, b) => b - a);
       // const sortedRating = rating.slice().sort().reverse();
+      // Sort the solved array based on the sortedRating order
+const sortedSolved = solved.map((_, index) => solved[numericRating.indexOf(sortedRating[index])]);
       setProb_rating((prevProb_rating) => ({
         options: {
           chart: {
@@ -198,7 +201,7 @@ const Analyze = () => {
         series: [
           {
             name: "Solved",
-            data: solved,
+            data: sortedSolved,
           },
         ],
       }));
@@ -282,13 +285,13 @@ const Analyze = () => {
 
         {/* Problem Description  */}
         <div id="level" className="mt-4">
-          <div className="col-12 px-2">
+          <div className="col-12 mx-2">
             <h5>Levels</h5>
             <Chart
               options={levels.options}
               series={levels.series}
               type="bar"
-              width="800"
+              width="870"
               height="300"
             />
           </div>
