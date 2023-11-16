@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Chart from "react-apexcharts";
+import { BASE_URL } from "../../helper";
 import "./Compare.css";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -18,7 +19,7 @@ const Compare = () => {
   const getApiData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/compare",
+        `${BASE_URL}/compare`,
         {
           username1: handle1,
           username2: handle2,

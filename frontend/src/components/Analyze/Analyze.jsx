@@ -3,6 +3,7 @@ import Chart from "react-apexcharts";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { BASE_URL } from "../../helper";
 import "./Analyze.css";
 const Analyze = () => {
   const location = useLocation();
@@ -108,7 +109,7 @@ const Analyze = () => {
   const getApiData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/analyze",
+        `${BASE_URL}/analyze`,
         {
           username: handle,
         },
